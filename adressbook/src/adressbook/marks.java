@@ -9,10 +9,19 @@ import org.omg.CORBA.SystemException;
 public class marks {
 	static String studentinfo[][] = { { "", "", "" }, { "", "", "" } };
 	static int mark[];
-	static File info = new File("S:\\info.txt");
+	static File info = new File("D:\\info.txt");
 
 	static String input;
+	
 	static int selected;
+
+	public static void numnam () throws  IOException{
+		
+		Scanner n = new Scanner(System.in);
+		System.out.println("name or number?");
+		input = n.nextLine();
+		n.close();
+	}
 
 	public static void select() throws IOException {
 		Scanner scanner = new Scanner(System.in);
@@ -28,6 +37,8 @@ public class marks {
 			}
 		}
 		scanner.close();
+		numnam();
+
 	}
 
 	public static void scan() throws IOException {
@@ -55,14 +66,6 @@ public class marks {
 
 		}
 		scanner.close();
-		Scanner n = new Scanner(System.in);
-		System.out.println("name or number?");
-		//input = scanner.nextLine();
-		
-		input = n.nextLine();
-	
-		n.close();	
+
 	}
 }
-
-
