@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="markbook/src"/>
+	<classpathentry kind="src" path="U4AScleanmulticalss/src"/>
+	<classpathentry kind="output" path="U4AScleanmulticalss/bin"/>
+</classpath>
