@@ -10,7 +10,7 @@ import org.omg.CORBA.SystemException;
 
 public class marks {
 	static Scanner scanner = new Scanner(System.in);
-	static String studentinfo[][] = { { "", "", "" }, { "", "", "" } };
+	static String studentinfo[][] = { { "", "", "" }, { "", "", "" },{"","",""},{"","","S"} };
 	static int mark[];
 	static File info = new File("D:\\info.txt");
 
@@ -44,6 +44,10 @@ public class marks {
 			System.out.println(studentinfo[0][i]);
 			studentinfo[1][i] = s.nextLine();
 			System.out.println(studentinfo[1][i]);
+			studentinfo[2][i] = s.nextLine();
+			System.out.println(studentinfo[2][i]);
+			studentinfo[3][i] = s.nextLine();
+			System.out.println(studentinfo[3][i]);
 
 		}
 		s.close();
@@ -52,20 +56,38 @@ public class marks {
 		for (int i = 0; i < 3; i++) {
 			System.out.println(studentinfo[0][i]);
 			System.out.println(studentinfo[1][i]);
+			System.out.println(studentinfo[2][i]);
+			System.out.println(studentinfo[3][i]);
 		}
 	}
-
+	public static void save() throws IOException {
+		BufferedWriter writer = new BufferedWriter(new FileWriter(info));
+		for (int i = 0; i < 3; i++) {
+			writer.write(studentinfo[0][i]);
+			writer.newLine();
+			writer.write(studentinfo[1][i]);
+			writer.newLine();
+			writer.write(studentinfo[2][i]);
+			writer.newLine();
+			writer.write(studentinfo[3][i]);
+			writer.newLine();
+			
+		}
+		writer.close();
+	}
 	public static void main(String[] args) throws IOException {
-		scan();
+		scan();// reads in from file
 
 		System.out.println("change info? Type yes or no");
-		input = scanner.nextLine();
+		input = scanner.nextLine();//gets user input
 		System.out.println(input);
 
 		if (input.equals("yes")) {
 			select();
-			System.out.println("name or number?");
+			System.out.println("name, number, address or email?");
 			input = scanner.nextLine();
+			
+			
 			if (input.equals("name")) {
 				System.out.println("enter new name");
 				input = scanner.nextLine();
@@ -77,26 +99,39 @@ public class marks {
 				studentinfo[1][selected] = input;
 
 			}
+			else if(input.equals("address")) {
+				System.out.println("enter new address");
+				input = scanner.nextLine();
+				studentinfo[2][selected] = input;
+			}
+			else if(input.equals("email")) {
+				System.out.println("enter new email");
+				input = scanner.nextLine();
+				studentinfo[3][selected] = input;
+			}
 
 			printout();
 			System.out.println("save changes?");
 			input = scanner.nextLine();
 			if (input.equals("yes")) {
-				BufferedWriter writer = new BufferedWriter(new FileWriter(info));
-				for (int i = 0; i < 3; i++) {
-					writer.write(studentinfo[0][i]);
-					writer.newLine();
-					writer.write(studentinfo[1][i]);
-					writer.newLine();
-					
-				}
-				writer.close();
+				save();
 			}
 			
 			else {
 
 			}
 
+		}
+		
+		else if ( input.equals("no")) {
+			System.out.println("add new contact? type yes or no");
+			if( input.equals("yes")) {
+				String temp[][] = new String [3][studentinfo.length+1];
+				
+			
+			
+			}
+			
 		}
 
 	}
