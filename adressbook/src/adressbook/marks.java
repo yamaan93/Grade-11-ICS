@@ -49,7 +49,7 @@ public class marks {
 		Scanner s = new Scanner(info);
 		String[][] resizer = new String[4][linecount / 4];
 		studentinfo = resizer;
-		for (int i = 0; i < linecount / 4; i++) {
+		for (int i = 0; i < studentinfo[0].length; i++) {
 
 			studentinfo[0][i] = s.nextLine();
 			System.out.println(studentinfo[0][i]);
@@ -59,6 +59,7 @@ public class marks {
 			System.out.println(studentinfo[2][i]);
 			studentinfo[3][i] = s.nextLine();
 			System.out.println(studentinfo[3][i]);
+			System.out.println("");
 
 		}
 
@@ -76,8 +77,10 @@ public class marks {
 	}
 
 	public static void save() throws IOException {
+		scanner.close();
 		BufferedWriter writer = new BufferedWriter(new FileWriter(info));
 		for (int i = 0; i < studentinfo[0].length; i++) {
+
 			writer.write(studentinfo[0][i]);
 			writer.newLine();
 			writer.write(studentinfo[1][i]);
@@ -100,32 +103,44 @@ public class marks {
 		String newaddr = scanner.next();
 		System.out.println("enter new email:");
 		String newemail = scanner.next();
-		String temp[][] = new String[4][studentinfo.length + 1];
+		String temp[][] = new String[4][studentinfo[0].length + 1];
 
-		for (int i = 0; i == studentinfo.length; i++) {
+		for (int i = 0; i < studentinfo[0].length; i++) {
 			temp[0][i] = studentinfo[0][i];
 			temp[1][i] = studentinfo[1][i];
 			temp[2][i] = studentinfo[2][i];
 			temp[3][i] = studentinfo[3][i];
 
 		}
+
+		temp[0][studentinfo[0].length] = newname;
+		temp[1][studentinfo[0].length] = newnum;
+		temp[2][studentinfo[0].length] = newaddr;
+		temp[3][studentinfo[0].length] = newemail;
 		studentinfo = temp;
-		studentinfo[0][studentinfo.length] = newname;
-		studentinfo[1][studentinfo.length] = newnum;
-		studentinfo[2][studentinfo.length] = newaddr;
-		studentinfo[3][studentinfo.length] = newemail;
-		save();
 		System.out.println("new contact added!");
+		System.out.println("save changes?");
+		System.out.println("");
+
+		// printout();
+		input = scanner.next();
+		if (input.equals("yes")) {
+
+			save();
+		}
+
+		else {
+
+		}
 
 		// printout();
 	}
 
 	public static void main(String[] args) throws IOException {
 		scan();// reads in from file
-		System.out.println(linecount);
+
 		System.out.println("change info? Type yes or no");
 		input = scanner.nextLine();// gets user input
-		System.out.println(input);
 
 		if (input.equals("yes")) {
 			select();
@@ -156,6 +171,7 @@ public class marks {
 			System.out.println("save changes?");
 			input = scanner.nextLine();
 			if (input.equals("yes")) {
+
 				save();
 			}
 
