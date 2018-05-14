@@ -1,3 +1,9 @@
+/* Yamaan Bakir 
+ * 5-13-2018 
+ * ICS 3U1
+ * Mrs.Medd
+ */
+
 package adressbook;
 
 import java.io.BufferedWriter;
@@ -9,18 +15,17 @@ import java.io.LineNumberReader;
 import java.util.Scanner;
 
 public class marks {
+
+	// variable and scanner declaration
 	static Scanner scanner = new Scanner(System.in);
-	// static String studentinfo[][] = { { "", "", "" }, { "", "", "" }, { "", "",
-	// "" }, { "", "", "" } };
 	static String studentinfo[][] = new String[4][3];
 	static int mark[];
 	static File info = new File("D:\\info.txt");
 	static int linecount;
 	static String input;
-
 	static int selected;
 
-	public static void select() throws IOException {
+	public static void select() throws IOException {// responsible for selecting the contact you would like to edit
 
 		System.out.println("who would you like to change?");
 		for (int i = 0; i < studentinfo[0].length; i++) {
@@ -38,7 +43,7 @@ public class marks {
 
 	}
 
-	public static void scan() throws IOException {
+	public static void scan() throws IOException { // scans the file for information and gets line count
 
 		FileReader input = new FileReader(info);
 		LineNumberReader count = new LineNumberReader(input);
@@ -66,7 +71,7 @@ public class marks {
 		s.close();
 	}
 
-	public static void printout() {
+	public static void printout() {// prints everything out
 		for (int i = 0; i < studentinfo[0].length; i++) {
 			System.out.println(studentinfo[0][i]);
 			System.out.println(studentinfo[1][i]);
@@ -76,9 +81,9 @@ public class marks {
 		}
 	}
 
-	public static void save() throws IOException {
+	public static void save() throws IOException { // saves edited information to the file
 		scanner.close();
-		BufferedWriter writer = new BufferedWriter(new FileWriter(info));
+		BufferedWriter writer = new BufferedWriter(new FileWriter(info)); // creates a writer that purges the file
 		for (int i = 0; i < studentinfo[0].length; i++) {
 
 			writer.write(studentinfo[0][i]);
@@ -94,7 +99,7 @@ public class marks {
 		writer.close();
 	}
 
-	public static void addnew() throws IOException {
+	public static void addnew() throws IOException { // responsible for adding new contact
 		System.out.println("enter new name:");
 		String newname = scanner.next();
 		System.out.println("enter new number:");
@@ -103,21 +108,21 @@ public class marks {
 		String newaddr = scanner.next();
 		System.out.println("enter new email:");
 		String newemail = scanner.next();
-		String temp[][] = new String[4][studentinfo[0].length + 1];
+		String temp[][] = new String[4][studentinfo[0].length + 1]; // temporary array for resizing original array
 
-		for (int i = 0; i < studentinfo[0].length; i++) {
+		for (int i = 0; i < studentinfo[0].length; i++) { // copies old array into temporary array
 			temp[0][i] = studentinfo[0][i];
 			temp[1][i] = studentinfo[1][i];
 			temp[2][i] = studentinfo[2][i];
 			temp[3][i] = studentinfo[3][i];
 
 		}
-
+		// adds new information
 		temp[0][studentinfo[0].length] = newname;
 		temp[1][studentinfo[0].length] = newnum;
 		temp[2][studentinfo[0].length] = newaddr;
 		temp[3][studentinfo[0].length] = newemail;
-		studentinfo = temp;
+		studentinfo = temp; // resizes orginal array
 		System.out.println("new contact added!");
 		System.out.println("save changes?");
 		System.out.println("");
@@ -136,7 +141,8 @@ public class marks {
 		// printout();
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException { // main section of the program that detemins weither or
+																// not you want to change the information of the program
 		scan();// reads in from file
 
 		System.out.println("change info? Type yes or no");
@@ -167,7 +173,7 @@ public class marks {
 				studentinfo[3][selected] = input;
 			}
 
-			printout();
+			printout(); // prints out newest version of the info array
 			System.out.println("save changes?");
 			input = scanner.nextLine();
 			if (input.equals("yes")) {
@@ -181,7 +187,8 @@ public class marks {
 
 		}
 
-		else if (input.equals("no")) {
+		else if (input.equals("no")) { // if user doesnt want contact list doesnt want to be edited, asks user if they
+										// want to add a new contact
 			System.out.println("add new contact? type yes or no");
 			input = scanner.next();
 			if (input.equals("yes")) {
