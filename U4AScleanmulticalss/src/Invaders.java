@@ -129,7 +129,15 @@ public class Invaders {
 	}
 	public static void startup() {
 		win = false;
-	
+		in1 = new enemy();
+		in2 = new enemy();
+		in3 = new enemy();
+		in4 = new enemy();
+		in5 = new enemy();
+		in6 = new enemy();
+		in7 = new enemy();
+		in8 = new enemy();
+		in9 = new enemy();
 		in1.x = 0;
 		in1.y = 0;
 		in2.x = in1.x + 100;// offset each new invader
