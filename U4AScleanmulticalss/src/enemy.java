@@ -9,39 +9,42 @@ public class enemy extends Invaders {
 	boolean hit = false;
 
 	public enemy() {
-
+		switchD = false;
+		hit = false;
+		x = 0;
+		y = 0;
 	}
 
 	public void col() { // checking colision of invader
+		System.out.println(switchD);
 		if (bullx > x - 1 && bullx < x + 101 && bully == y || bully > y && bully < y + h && bullx == x - w + 10) {
 			hit = true;
 			score = score + 100;
 			fire = false;
 			bully = Py;
-			
+
 		}
 	}
 
-	public void updateinv() { // draw invader 
-		System.out.println(hit);
+	public void updateinv() { // draw invader
+
 		if (hit == false) {
-			
+
 			c.drawImage(invader, x, y, w, h);
 
-		
 			// System.out.println(x);
 			col();
 
-			if (x == -1 || x == 800) {
+			if (x < -1 || x > 800) {
 				switchD = !switchD;
 				down = true;
 
 			}
 			if (switchD == false) {
-				x+=speed;
+				x += speed;
 			}
 			if (switchD == true) {
-				x-=speed;
+				x -= speed;
 			}
 
 			if (down == true && y < 700) {
