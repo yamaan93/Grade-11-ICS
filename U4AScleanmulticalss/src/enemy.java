@@ -16,8 +16,9 @@ public class enemy extends Invaders {
 	}
 
 	public void col() { // checking colision of invader
-		System.out.println(switchD);
-		if (bullx > x - 1 && bullx < x + 101 && bully == y || bully > y && bully < y + h && bullx == x - w + 10) {
+		// old collision bullx > x - 1 && bullx < x + 101 && bully == y || bully > y &&
+		// bully < y + h && bullx == x - w + 10
+		if (bullx < x + w - 1 && bully < y + h - 1 && x < bullx + 10 && y < bully + 10) {
 			hit = true;
 			score = score + 100;
 			fire = false;

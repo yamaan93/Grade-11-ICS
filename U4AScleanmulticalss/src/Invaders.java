@@ -155,8 +155,16 @@ public class Invaders {
 			if (hitcount == inv.size()) {
 				win = true;
 				start = 3;
+
 			}
+
+			if (inv.get(i).y == Py) {
+				win = false;
+				start = 4;
+			}
+
 		}
+
 		/*
 		 * if (in2.hit == true && in3.hit == true && in3.hit == true && in4.hit == true
 		 * && in5.hit == true && in6.hit == true && in7.hit == true && in8.hit == true
@@ -231,10 +239,20 @@ public class Invaders {
 					c.setFont(title);
 					c.drawString("VICTORY", 200, 500);
 					c.setFont(ocr);
-					c.drawString("press Shift to continue", 200, 600);
+					c.drawString("press F to continue", 200, 600);
 
 				}
+
+				if (start == 4) {
+					c.setFont(title);
+					c.drawString("Game over", 200, 500);
+					c.setFont(ocr);
+					c.drawString("press F to restart", 200, 600);
+				}
 				if (c.isKeyDown(70)) {
+					if (start == 3) {
+						level++;
+					}
 					System.out.println("restarting");
 					startup();
 
