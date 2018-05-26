@@ -23,7 +23,7 @@ public class Invaders {
 	static Font title = new Font("OCR A Extended", Font.BOLD, 70);
 	static int Px;
 	static int Py = 664;
-
+	static int level = 1;
 	static int start = 0;
 	static boolean down;
 	static boolean win = false;
@@ -64,6 +64,7 @@ public class Invaders {
 
 			}
 			c.drawString("score: " + score, 0, 50);
+			c.drawString("level: " + level, 700, 50);
 			for (int i = 0; i < inv.size(); i++) {
 				inv.get(i).updateinv();
 			}
@@ -146,11 +147,21 @@ public class Invaders {
 	}
 
 	public static void endgame() {
-		if (in2.hit == true && in3.hit == true && in3.hit == true && in4.hit == true && in5.hit == true
-				&& in6.hit == true && in7.hit == true && in8.hit == true && in9.hit == true) {
-			win = true;
-			start = 3;
+		int hitcount = 0;
+		for (int i = 0; i < inv.size(); i++) {
+			if (inv.get(i).hit == true) {
+				hitcount++;
+			}
+			if (hitcount == inv.size()) {
+				win = true;
+				start = 3;
+			}
 		}
+		/*
+		 * if (in2.hit == true && in3.hit == true && in3.hit == true && in4.hit == true
+		 * && in5.hit == true && in6.hit == true && in7.hit == true && in8.hit == true
+		 * && in9.hit == true) { win = true; start = 3; }
+		 */
 	}
 
 	public static void main(String[] args) {// main
@@ -163,6 +174,7 @@ public class Invaders {
 		inv.add(0, in7);
 		inv.add(0, in8);
 		inv.add(0, in9);
+
 		c.setBackgroundColor(Color.BLACK);
 		c.clear();// clears the screen to apply background
 
@@ -185,20 +197,16 @@ public class Invaders {
 				endgame();
 
 				if (start == 0) {
-					c.drawString("space invaders beta!", 0, 100);
-					try {
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					c.setFont(title);
+					c.drawRect(120, 30, 760, 100);
+					c.drawString("space invaders!", 160, 100);
+					c.setFont(ocr);
 					// start menue instructions
-					c.drawString("press shift to start", 0, 200);
-					c.drawString("controls:", 500, 200);
-					c.drawString("D = left", 500, 250);
-					c.drawString("A = right", 500, 300);
-					c.drawString("Space = fire", 500, 350);
-
+					c.drawString("controls:", 370, 200);
+					c.drawString("D = left", 370, 250);
+					c.drawString("A = right", 370, 300);
+					c.drawString("Space = fire", 370, 350);
+					c.drawString("press shift to start", 270, 600);
 					if (c.isKeyDown(16)) {
 						start = 2;
 					}
