@@ -124,19 +124,25 @@ public class Invaders {
 		in3.y = 0;
 		in4.y = 0;
 		in5.y = 0;
-		in6.y = 0;
+
 		in2.x = in1.x + 100;// offset each new invader
 		in3.x = in2.x + 100;
 		in4.x = in3.x + 100;
 		in5.x = in4.x + 100;
-		in6.x = in2.x;
-		in6.y = in2.y + 75;
-		in7.y = in2.y + 75;
-		in8.y = in2.y + 75;
-		in9.y = in2.y + 75;
-		in7.x = in6.x + 75;
-		in8.x = in7.x + 75;
-		in9.x = in8.x + 75;
+
+		if (level >= 2) {
+			in6.y = 0;
+			in6.x = in2.x;
+			in6.y = in2.y + 75;
+			in7.y = in2.y + 75;
+			in8.y = in2.y + 75;
+			in9.y = in2.y + 75;
+			in7.x = in6.x + 75;
+			in8.x = in7.x + 75;
+			in9.x = in8.x + 75;
+			in10.y = in5.y + 75;
+			in10.x = in5.x;
+		}
 		for (int i = 0; i < inv.size(); i++) {
 			inv.get(i).hit = false;
 			inv.get(i).switchD = false;
@@ -172,16 +178,23 @@ public class Invaders {
 		 */
 	}
 
+	public static void addinv() {
+		if (level == 2) {
+			inv.add(0, in6);
+			inv.add(0, in7);
+			inv.add(0, in8);
+			inv.add(0, in9);
+			inv.add(0, in10);
+		}
+
+	}
+
 	public static void main(String[] args) {// main
 		// inv.add(0, in1);
 		inv.add(0, in2);
 		inv.add(0, in3);
 		inv.add(0, in4);
 		inv.add(0, in5);
-		inv.add(0, in6);
-		inv.add(0, in7);
-		inv.add(0, in8);
-		inv.add(0, in9);
 
 		c.setBackgroundColor(Color.BLACK);
 		c.clear();// clears the screen to apply background
@@ -252,6 +265,7 @@ public class Invaders {
 				if (c.isKeyDown(70)) {
 					if (start == 3) {
 						level++;
+						addinv();
 					}
 					System.out.println("restarting");
 					startup();
