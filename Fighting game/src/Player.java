@@ -16,7 +16,7 @@ public class Player extends Frame {
 	}
 
 	public void fire() throws InterruptedException {
-		bullet b = new bullet(x + 20, y);
+		bullet b = new bullet(x + 19, y + 35);
 		bullets.add(b);
 
 	}

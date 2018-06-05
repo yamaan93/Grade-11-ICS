@@ -11,7 +11,7 @@ public class bullet extends Frame {
 
 	public boolean col() {
 		boolean hit;
-		if (x > 1000) {
+		if (x > 1300) {
 			hit = true;
 		} else {
 			hit = false;
@@ -25,7 +25,7 @@ public class bullet extends Frame {
 		col();
 		if (col() == false) {
 			x += 10;
-			c.fillRect(x, y, 40, 40);
+			c.fillRect(x, y, 20, 20);
 		}
 	}
 

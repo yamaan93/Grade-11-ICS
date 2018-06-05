@@ -3,7 +3,7 @@ import java.awt.Font;
 import hsa_ufa.Console;
 
 public class Frame {
-	public static Console c = new Console(1000, 800, "FIGHT");
+	public static Console c = new Console(1200, 800, "FIGHT");
 	public static int screen = 0;
 	public static int Sx = 0;
 	public static int Sy = 250;
