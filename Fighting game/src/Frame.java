@@ -32,15 +32,17 @@ public class Frame {
 			}
 			if (selected == true && c.getMouseButton(0)) {
 				screen = 1;
+				System.out.println("hola");
 			}
 
 		}
 	}
 
-	public static void game() {
+	public static void game() throws InterruptedException {
 		synchronized (c) {
 			c.clear();
 			p1.update();
+
 		}
 	}
 
