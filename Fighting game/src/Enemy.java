@@ -15,7 +15,7 @@ public class Enemy extends Frame {
 		type = ty;
 		if (ty == 1) {
 			enemy = Toolkit.getDefaultToolkit()
-					.getImage(c.getClass().getClassLoader().getResource("myMedia/pixel-art-fire-monster.jpg"));
+					.getImage(c.getClass().getClassLoader().getResource("myMedia/pixel-art-fire-monster.png"));
 		}
 
 	}
