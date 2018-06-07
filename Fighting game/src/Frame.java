@@ -9,6 +9,7 @@ public class Frame {
 	public static int Sy = 250;
 	public static boolean selected = false;
 	static Player p1 = new Player();
+	static Enemy en = new Enemy(100, 1);
 
 	public static void menu() {
 		Font title = new Font("Arial", Font.BOLD, 70);
@@ -42,6 +43,7 @@ public class Frame {
 		synchronized (c) {
 			c.clear();
 			p1.update();
+			en.update_en();
 
 		}
 	}

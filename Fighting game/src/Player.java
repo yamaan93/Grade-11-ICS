@@ -9,6 +9,7 @@ public class Player extends Frame {
 	int h = 50;
 	int x = 0;
 	int y = 0;
+	int health = 100;
 	public ArrayList<bullet> bullets = new ArrayList<bullet>();
 
 	public Player() {
@@ -26,6 +27,7 @@ public class Player extends Frame {
 	}
 
 	public void update() throws InterruptedException {
+		System.out.println(x + "    " + y);
 		for (int i = 0; i < bullets.size(); i++) {
 			bullets.get(i).updatebullet();
 
@@ -35,16 +37,16 @@ public class Player extends Frame {
 		}
 		c.drawImage(player, x, y, 100, 100);
 		int speed = 10;
-		if (c.isKeyDown(68)) {
+		if (c.isKeyDown(68) && x < 1100) {
 			x += speed;
 		}
-		if (c.isKeyDown(65)) {
+		if (c.isKeyDown(65) && x > 0) {
 			x -= speed;
 		}
-		if (c.isKeyDown(87)) {
+		if (c.isKeyDown(87) && y > 0) {
 			y -= speed;
 		}
-		if (c.isKeyDown(83)) {
+		if (c.isKeyDown(83) && y < 700) {
 			y += speed;
 		}
 		if (c.isKeyDown(32)) {
