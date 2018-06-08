@@ -2,6 +2,8 @@
 public class bullet extends Frame {
 	int x;
 	int y;
+	int w = 20;
+	int h = 20;
 	boolean fire;
 
 	public bullet(int x1, int y1) {
@@ -21,11 +23,11 @@ public class bullet extends Frame {
 	}
 
 	public void updatebullet() {
-		System.out.println(x);
+
 		col();
 		if (col() == false) {
 			x += 10;
-			c.fillRect(x, y, 20, 20);
+			c.fillRect(x, y, w, h);
 		}
 	}
 

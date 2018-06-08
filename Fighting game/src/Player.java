@@ -27,7 +27,7 @@ public class Player extends Frame {
 	}
 
 	public void update() throws InterruptedException {
-		System.out.println(x + "    " + y);
+		// System.out.println(x + " " + y);
 		for (int i = 0; i < bullets.size(); i++) {
 			bullets.get(i).updatebullet();
 

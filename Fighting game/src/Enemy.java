@@ -1,7 +1,7 @@
 import java.awt.Image;
 import java.awt.Toolkit;
 
-public class Enemy extends Frame {
+public class Enemy extends Player {
 	int x = 700;
 	int y = 100;
 	int w = 400;
@@ -9,6 +9,21 @@ public class Enemy extends Frame {
 	int health;
 	int type;
 	Image enemy;
+	boolean hit = false;
+
+	public boolean col() {
+		System.out.println(bullets.get(0).x);
+		for (int i = 0; i < bullets.size(); i++) {
+			// if (bullets.get(i).x < x + w && x < bullets.get(i).x + bullets.get(i).w &&
+			// bullets.get(i).y < y + h
+			// && y < bullets.get(i).y + bullets.get(i).h) {
+			if (bullets.get(i).x < x) {
+				hit = true;
+			}
+		}
+		return hit;
+
+	}
 
 	public Enemy(int hel, int ty) {
 		health = hel;
@@ -21,6 +36,9 @@ public class Enemy extends Frame {
 	}
 
 	public void update_en() {
-		c.drawImage(enemy, x, y, w, h);
+		col();
+		if (col() == false) {
+			c.drawImage(enemy, x, y, w, h);
+		}
 	}
 }
