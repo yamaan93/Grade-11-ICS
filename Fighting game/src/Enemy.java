@@ -8,16 +8,21 @@ public class Enemy extends Player {
 	int h = 200;
 	int health;
 	int type;
+	int tic;
+	boolean switchD = false;
 	Image enemy;
 	boolean hit = false;
 
 	public boolean col() {
-		System.out.println(bullets.get(0).x);
-		for (int i = 0; i < bullets.size(); i++) {
-			// if (bullets.get(i).x < x + w && x < bullets.get(i).x + bullets.get(i).w &&
-			// bullets.get(i).y < y + h
-			// && y < bullets.get(i).y + bullets.get(i).h) {
-			if (bullets.get(i).x < x) {
+
+		if (bullets.size() > 1) {
+			System.out.println(p1.bullets.get(0).x);
+		}
+		for (int i = 0; i < p1.bullets.size(); i++) {// collision for all the bullets at once
+			if (p1.bullets.get(i).x < x + w && x < p1.bullets.get(i).x + p1.bullets.get(i).w
+					&& p1.bullets.get(i).y < y + h && y < p1.bullets.get(i).y + p1.bullets.get(i).h) {
+				p1.bullets.remove(i);// once a bullet hits remove it from array list to save on RAM
+				health--;// remove health
 				hit = true;
 			}
 		}
@@ -36,8 +41,27 @@ public class Enemy extends Player {
 	}
 
 	public void update_en() {
+
+		tic++;
+		if (tic % 200 == 0) {
+
+		}
+		if (y == 700) {
+			switchD = true;
+		}
+		if (y == 0) {
+			switchD = false;
+		}
+
+		if (switchD == false) {
+			y++;
+		}
+		if (switchD == true) {
+			y--;
+		}
+
 		col();
-		if (col() == false) {
+		if (health > 0) {
 			c.drawImage(enemy, x, y, w, h);
 		}
 	}
