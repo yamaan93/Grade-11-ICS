@@ -10,6 +10,7 @@ public class Player extends Frame {
 	int x = 0;
 	int y = 0;
 	int health = 100;
+	int tic;
 	public ArrayList<bullet> bullets = new ArrayList<bullet>();
 
 	public Player() {
@@ -27,6 +28,7 @@ public class Player extends Frame {
 	}
 
 	public void update() throws InterruptedException {
+		tic++;
 		// System.out.println(bullets.size());
 		// System.out.println(x + " " + y);
 		for (int i = 0; i < bullets.size(); i++) {
@@ -50,7 +52,7 @@ public class Player extends Frame {
 		if (c.isKeyDown(83) && y < 700) {
 			y += speed;
 		}
-		if (c.isKeyDown(32)) {
+		if (c.isKeyDown(32) && tic % 10 == 0) {
 			fire();
 		}
 

@@ -15,12 +15,9 @@ public class Enemy extends Player {
 
 	public boolean col() {
 
-		if (bullets.size() > 1) {
-			System.out.println(p1.bullets.get(0).x);
-		}
 		for (int i = 0; i < p1.bullets.size(); i++) {// collision for all the bullets at once
 			if (p1.bullets.get(i).x < x + w && x < p1.bullets.get(i).x + p1.bullets.get(i).w
-					&& p1.bullets.get(i).y < y + h && y < p1.bullets.get(i).y + p1.bullets.get(i).h) {
+					&& p1.bullets.get(i).y < y + h && y < p1.bullets.get(i).y + p1.bullets.get(i).h && health > 0) {
 				p1.bullets.remove(i);// once a bullet hits remove it from array list to save on RAM
 				health--;// remove health
 				hit = true;
@@ -45,6 +42,8 @@ public class Enemy extends Player {
 		tic++;
 		if (tic % 200 == 0) {
 
+			bullet b = new bullet(x + 19, y + 35, 1);
+			en.bullets.add(b);
 		}
 		if (y == 700) {
 			switchD = true;

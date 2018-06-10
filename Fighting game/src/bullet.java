@@ -32,7 +32,18 @@ public class bullet extends Frame {
 			c.fillRect(x, y, w, h);
 		}
 		if (col() == false && direction == 1) {
+			System.out.println("fired");
 			x -= 10;
+			c.fillRect(x, y, w, h);
+		}
+		if (col() == false && direction == 2) {
+			x -= 10;
+			y += 10;
+			c.fillRect(x, y, w, h);
+		}
+		if (col() == false && direction == 3) {
+			x -= 10;
+			y += 10;
 			c.fillRect(x, y, w, h);
 		}
 	}
