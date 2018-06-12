@@ -66,6 +66,12 @@ public class Frame {
 			if (screen == 1) {
 				game();
 			}
+			if (screen == 2) {
+				// game over
+				synchronized (c) {
+					c.drawString("game over", 300, 200);
+				}
+			}
 
 			Thread.sleep(10);
 		}

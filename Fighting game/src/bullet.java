@@ -11,6 +11,7 @@ public class bullet extends Frame {
 		x = x1;
 		y = y1;
 		direction = mode;
+
 	}
 
 	public boolean col() {
@@ -32,7 +33,7 @@ public class bullet extends Frame {
 			c.fillRect(x, y, w, h);
 		}
 		if (col() == false && direction == 1) {
-			System.out.println("fired");
+
 			x -= 10;
 			c.fillRect(x, y, w, h);
 		}
@@ -43,7 +44,7 @@ public class bullet extends Frame {
 		}
 		if (col() == false && direction == 3) {
 			x -= 10;
-			y += 10;
+			y -= 10;
 			c.fillRect(x, y, w, h);
 		}
 	}

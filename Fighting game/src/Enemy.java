@@ -13,6 +13,7 @@ public class Enemy extends Player {
 	Image enemy;
 	boolean hit = false;
 
+	@Override
 	public boolean col() {
 
 		for (int i = 0; i < p1.bullets.size(); i++) {// collision for all the bullets at once
@@ -37,13 +38,23 @@ public class Enemy extends Player {
 
 	}
 
-	public void update_en() {
-
+	public void update_en() throws InterruptedException {
+		boolean straight = true;
+		System.out.println(p1.y);
 		tic++;
-		if (tic % 200 == 0) {
+		if (tic % 20 == 0) {
+			if (p1.y > y + h) {
+				straight = false;
+				p1.fire(x - 110, y, 2);
+			}
+			if (p1.y < y + p1.h) {
+				straight = false;
+				p1.fire(x - 110, y, 3);
+			}
+			if (p1.y < y && p1.y > y + h && straight == true) {
+				p1.fire(x - 110, y, 1);
+			}
 
-			bullet b = new bullet(x + 19, y + 35, 1);
-			en.bullets.add(b);
 		}
 		if (y == 700) {
 			switchD = true;
