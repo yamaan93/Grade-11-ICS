@@ -174,7 +174,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 
 		if (astriodList.isEmpty() && survival == false && timeChallange == false) {
 			offG.setFont(new Font("Lucia Grande", 0, 50));
-			offG.drawString("YAY YOU WIN!!! :)", 800, 450);
+			offG.drawString("YAY YOU WIN!!! :)  press R to restart", 800, 450);
 
 		}
 
@@ -190,7 +190,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 
 		}
 
-		for (int i = 0; i > shipList.size(); i++) {
+		for (int i = 0; i < shipList.size(); i++) {
 			System.out.println(shipList.get(i).lives);
 			if (shipList.get(i).lives == 0 && timeChallange == false) {// removed && (multiplayer &&
 																		// shipList.get(1).lives == 0)
@@ -509,6 +509,12 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 				timeC -= 1;
 				astriodCounter += 1;
 			}
+			if(survival == true && score < 70000) {
+				astriodCounter +=2;
+			}
+			else if(survival == true && score > 70000) {
+				astriodCounter +=10;
+			}
 			if (timeC == 0) {
 
 				if (timeChallange && score > timeHS) {
@@ -523,7 +529,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 			if (astriodCounter > 1200 && (survival == true || timeChallange == true)) {
 				astriodList.add(new Astriod());
 
-				astriodCounter = 0;
+				astriodCounter =0;
 
 			}
 			checkCollision();
