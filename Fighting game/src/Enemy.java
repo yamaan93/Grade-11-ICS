@@ -29,6 +29,7 @@ public class Enemy extends Player {
 	}
 
 	public Enemy(int hel, int ty) {
+
 		health = hel;
 		type = ty;
 		if (ty == 1) {
@@ -39,10 +40,13 @@ public class Enemy extends Player {
 	}
 
 	public void update_en() throws InterruptedException {
+
+		c.drawString("health:", 700, 100);
+		c.fillRect(800, 80, health * 3, 20);
 		boolean straight = true;
 		System.out.println(p1.y);
 		tic++;
-		if (tic % 20 == 0) {
+		if (tic % 20 == 0 && health > 0) {
 			if (p1.y > y + h) {
 				straight = false;
 				p1.fire(x - 110, y, 2);

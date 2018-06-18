@@ -1,4 +1,6 @@
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 import hsa_ufa.Console;
 
@@ -10,6 +12,7 @@ public class Frame {
 	public static boolean selected = false;
 	static Player p1 = new Player();
 	static Enemy en = new Enemy(100, 1);
+	static Font UI = new Font("Arial", Font.BOLD, 20);
 
 	public static void menu() {
 		Font title = new Font("Arial", Font.BOLD, 70);
@@ -40,6 +43,7 @@ public class Frame {
 	}
 
 	public static void game() throws InterruptedException {
+		c.setFont(UI);
 		synchronized (c) {
 			c.clear();
 			p1.update();
@@ -49,14 +53,29 @@ public class Frame {
 	}
 
 	public static void main(String[] args) throws InterruptedException {
-
+		int tic = 0;
+		p1.x = 200;
+		p1.y = 200;
+		Image background1 = Toolkit.getDefaultToolkit()
+				.getImage(c.getClass().getClassLoader().getResource("myMedia/background.jpg"));
 		/////////////////////////////////
 		c.enableMouse();
 		c.enableMouseMotion();
 		c.enableMouseWheel();
 
 		////////////////////////////////
+		while (tic < 10) {
+			tic++;
+			synchronized (c) {
+				System.out.println(tic);
+				c.clear();
+				c.drawImage(background1, 0, 0);
+				p1.x++;
+				p1.update();
+			}
 
+		}
+		p1.x = 0;
 		while (true) {
 
 			if (screen == 0) {

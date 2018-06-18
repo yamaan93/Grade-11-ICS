@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Player extends Frame {
 	Image player = Toolkit.getDefaultToolkit()
-			.getImage(c.getClass().getClassLoader().getResource("myMedia/Megaman.jpg"));
+			.getImage(c.getClass().getClassLoader().getResource("myMedia/Megaman.png"));
 	int w = 50;
 	int h = 50;
 	int x = 0;
@@ -47,6 +47,7 @@ public class Player extends Frame {
 	public void update() throws InterruptedException {
 		col();
 		tic++;
+
 		// System.out.println(bullets.size());
 		// System.out.println(x + " " + y);
 		for (int i = 0; i < bullets.size(); i++) {
@@ -74,9 +75,9 @@ public class Player extends Frame {
 			}
 			if (c.isKeyDown(32)) {
 				// playerpressed = true;
-				if (tic % 10 == 0) {
-					fire(x, y, 0);
-				}
+				// if (tic % 10 == 0) {
+				fire(x, y, 0);
+				// }
 
 			}
 
