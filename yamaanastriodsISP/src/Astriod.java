@@ -20,7 +20,7 @@ public class Astriod extends VectorSprite{
 		xPosition=x;
 		yPosition=y;
 	}
-	public void initializeAstriod(){
+	public void initializeAstriod(){ // draws a shape with points that are adjusted based of the given size value 
 		double a,h;
 		shape = new Polygon();
         shape.addPoint(20*size, 2*size);

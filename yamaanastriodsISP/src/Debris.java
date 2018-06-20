@@ -5,7 +5,7 @@ import java.awt.Polygon;
 public class Debris extends VectorSprite{
 
 	
-	public Debris(double xPos, double yPos){
+	public Debris(double xPos, double yPos){ // generates a spiral of debris when an objectis hit 
 	shape = new Polygon();
 		double a;
 		a=Math.random()*2*Math.PI;

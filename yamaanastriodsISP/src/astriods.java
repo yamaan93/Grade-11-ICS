@@ -235,15 +235,20 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 		offG.setFont(new Font("Lucia Grande", 0, 80));
 		offG.drawString(" 1 Player", 750, 300);
 
-		offG.setFont(new Font("Lucia Grande", 0, 80));
 		offG.drawString(" SURVIVAL", 750, 500);
 
-		offG.setFont(new Font("Lucia Grande", 0, 80));
+	
 		offG.drawString("TIME TRIAL", 750, 700);
 
-		offG.setFont(new Font("Lucia Grande", 0, 80));
+	
 		offG.drawString("2 PLAYER!", 750, 900);
-
+		offG.setFont(new Font("Lucia Grande",0,70));
+		offG.drawString("Controls:", 20, 200);
+		offG.setFont(new Font("Lucia Grande",0,60));
+		offG.drawString("Accelerate: Up Arrow", 20, 300);
+		offG.drawString("Deccelerate: Down Arrow", 20, 400);
+		offG.drawString("Turn Right: Right Arrow", 20, 500);
+		offG.drawString("Turn Left: Left Arrow", 20, 600);
 	}
 
 	public void paintTC() { // paints the ingame messages
@@ -260,7 +265,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 			offG.drawString("oops! you ran out of time!", 700, 450);
 		}
 
-		if (newScore == true) {
+		if (newScore == true) {// only paint High score message if there is a new highscore 
 
 			paintHS();
 
@@ -414,6 +419,10 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 			if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
 				shiftKey = true;
 			}
+			
+			else {
+				System.out.println("press the right button");// EFFECTIVE use of error checking on user input 
+			}
 		}
 	}
 
@@ -424,7 +433,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 
 	public void keyCheck() { // when the keys are pressed, these are the actions
 		if (upKey) {
-			shipList.get(0).accelerate();
+			shipList.get(0).accelerate();// controls ships movement 
 		}
 		if (downKey) {
 			shipList.get(0).decelerate();
@@ -444,7 +453,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 
 		}
 
-		if (multiplayer) {
+		if (multiplayer) {// only reads player 2 input if multiplayer is selected
 			if (wKey) {
 				shipList.get(1).accelerate();
 			}
@@ -468,7 +477,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 	}
 
 	@Override
-	public void update(Graphics g) {
+	public void update(Graphics g) {// main screen update
 		paint(g);
 	}
 
@@ -505,6 +514,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 				}
 
 			}
+			// thsi section controls the spawning of new astroid periodically if survival or time trial mode is enabled
 			if (timeChallange == true && timeTick == true) {
 				timeC -= 1;
 				astriodCounter += 1;
@@ -516,7 +526,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 				astriodCounter +=10;
 			}
 			if (timeC == 0) {
-
+				// if there is a new highscore, save it 
 				if (timeChallange && score > timeHS) {
 
 					newhighScore(timeFile);
@@ -608,7 +618,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 
 	}
 
-	public void fireBullet(int i) {
+	public void fireBullet(int i) { // fires bullet
 		if (shipList.get(i).counter >= 25 && shipList.get(i).active == true) {
 			bulletList.add(new Bullet(shipList.get(i).drawShape.xpoints[0], shipList.get(i).drawShape.ypoints[0],
 					shipList.get(i).angle));
@@ -618,7 +628,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 
 	}
 
-	public void checkAstriodDestruction() {
+	public void checkAstriodDestruction() {// when astroid is hit, spawn new astroids of a smaller size 
 		for (int i = 0; i < astriodList.size(); i++) {
 			if (astriodList.get(i).active == false) {
 
@@ -641,7 +651,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void mouseClicked(MouseEvent e) {// for pressing on menu buttons
 		// System.out.println(e.getX()+","+ e.getY());
 		int x = e.getX();
 		int y = e.getY();
@@ -721,7 +731,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 
 	public void music() {
 
-		retro.play();
+		retro.play();// plays music 
 	}
 
 }

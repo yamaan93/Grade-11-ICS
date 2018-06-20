@@ -37,8 +37,8 @@ public class VectorSprite {
 		int x, y;
 		counter++;
 		wrapAround();
-		for(int i = 0; i <shape.npoints; i++ ){
-
+		for(int i = 0; i <shape.npoints; i++ ){ // nice eh?
+			// draws shapes based off angle using MATH
 			x = (int)Math.round(shape.xpoints[i] *Math.cos(angle) - shape.ypoints[i] *Math.sin(angle));
 			y = (int)Math.round(shape.xpoints[i] *Math.sin(angle) + shape.ypoints[i] *Math.cos(angle));
 			drawShape.xpoints[i] = x;
