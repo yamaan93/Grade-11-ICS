@@ -63,19 +63,26 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 
 	@Override
 	public void init() {
-		Console c = new Console(1920, 1080);
+		
+		Console c = new Console(1800, 1080);
 		c.setBackground(Color.BLACK);
 		c.clear();
 		Image player = Toolkit.getDefaultToolkit()
 				.getImage(c.getClass().getClassLoader().getResource("myMedia/background.png"));
 		c.drawImage(player, 0, 0, 1920, 1080);
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		for(int i = 0; i < 1001; i++) {
+			
+			c.setColor(Color.green);
+			c.fillRect( 300, 700, i, 50);
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
-
+		
+		
 		c.close();
 		newScore = false;
 		timeC = 100000;
@@ -108,7 +115,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 		offG = offScreen.getGraphics();
 
 		try { // starts file reader for highscores, reads them in if there are any
-			in = new BufferedReader(new FileReader(file.getAbsoluteFile()));
+			in = new BufferedReader(new FileReader(file.getAbsoluteFile())); // im pretty sure this creates a new file 
 			String str = in.readLine();
 			if (str != null) {
 				highScore = Integer.parseInt(str);
@@ -130,7 +137,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 	}
 
 	@Override
-	public void paint(Graphics g) {
+	public void paint(Graphics g) { // main paint meathod
 
 		if (started == true) {
 
