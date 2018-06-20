@@ -75,7 +75,7 @@ public class astriods extends Applet implements KeyListener, ActionListener, Mou
 			c.setColor(Color.green);
 			c.fillRect( 300, 700, i, 50);
 			try {
-				Thread.sleep(10);
+				Thread.sleep(5);
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
